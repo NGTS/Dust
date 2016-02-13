@@ -47,9 +47,8 @@ def makeMasterFlat(action):
 	flat_combined_total=0
 	for i in t2:
 		h=fits.open(i)
-		e=float(h[0].header['EXPOSURE'])
 		d=h[0].data[0:2048,20:2068]
-		oscan=h[0].data[0:2048,2070:]
+		oscan=h[0].data[4:,-15:]
 		dc=d-np.median(oscan)
 		dc_list.append(dc)
 		flat_combined_total+=1
